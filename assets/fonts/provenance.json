@@ -1,0 +1,9 @@
+{
+  "name": "DejaVu Sans Mono",
+  "version": "2.37",
+  "source": "https://dejavu-fonts.github.io/",
+  "sha256": "a54dca07c76d6289e717e75e0a58c0128f6d7269ef3faf76417c9d7d3bba37ab",
+  "license": "Bitstream-Vera AND LicenseRef-DejaVu-Public-Domain",
+  "licenseFile": "LICENSES/dejavu.txt",
+  "modified": false
+}

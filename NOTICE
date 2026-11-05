@@ -1,0 +1,18 @@
+tizen-shell
+Copyright 2026 Piotr Adamski (piotr-adamski)
+Original project author: Piotr Adamski (piotr-adamski)
+
+Original project contributions are licensed under Apache License 2.0.
+Third-party components remain under their respective licenses.
+
+This product includes xterm.js (Christopher Jeffrey, SourceLair and the
+xterm.js authors), xterm addon-fit, OpenSSL, libssh2, Emscripten runtime
+code, Samsung Electronics Emscripten extensions, musl libc, LLVM
+compiler-rt, Doug Lea's dlmalloc and DejaVu Sans Mono. Their license and authorship notices
+are preserved in LICENSES/ and described in THIRD_PARTY_NOTICES.md.
+
+Visual/workflow inspiration: Omarchy. No Omarchy source code, wallpapers
+or screenshots are included in this distribution.
+
+Samsung and Tizen are third-party trademarks. This is an independent
+community project and is not endorsed by Samsung.

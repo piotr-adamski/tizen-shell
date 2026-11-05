@@ -1,0 +1,22 @@
+Original Samsung extension copyright and license headers. The downloaded SDK remains external to this repository.
+
+library_tizen_sockfs.js
+// Copyright 2013 The Emscripten Authors.  All rights reserved.
+// Copyright 2019 Samsung Electronics
+// Emscripten is available under two separate licenses, the MIT license and the
+// University of Illinois/NCSA Open Source License.  Both these licenses can be
+// found in the LICENSE file.
+
+library_tizen_tv_wasm.js
+// Copyright 2020 Samsung Electronics
+// TizenTV Emscripten extensions are available under two separate licenses, the
+// MIT license and the University of Illinois/NCSA Open Source License.  Both
+// these licenses can be found in the LICENSE file.
+
+
+library_tizen_emss.js
+// Copyright 2020 Samsung Electronics
+// TizenTV Emscripten extensions are available under two separate licenses, the
+// MIT license and the University of Illinois/NCSA Open Source License.  Both
+// these licenses can be found in the LICENSE file.
+

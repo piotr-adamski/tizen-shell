@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "components": [
+    {
+      "name": "xterm.js",
+      "version": "5.5.0",
+      "license": "MIT",
+      "role": "terminal renderer",
+      "upstream": "https://github.com/xtermjs/xterm.js",
+      "licenseFile": "LICENSES/xterm.txt",
+      "authorsFile": "LICENSES/xterm.txt"
+    },
+    {
+      "name": "@xterm/addon-fit",
+      "version": "0.10.0",
+      "license": "MIT",
+      "role": "terminal sizing",
+      "upstream": "https://github.com/xtermjs/xterm.js",
+      "licenseFile": "LICENSES/xterm-fit.txt",
+      "authorsFile": "LICENSES/xterm-fit.txt"
+    },
+    {
+      "name": "OpenSSL",
+      "version": "3.5.9",
+      "license": "Apache-2.0",
+      "role": "WASM cryptography",
+      "upstream": "https://github.com/openssl/openssl",
+      "licenseFile": "LICENSES/openssl.txt",
+      "authorsFile": "LICENSES/openssl-AUTHORS.md"
+    },
+    {
+      "name": "libssh2",
+      "version": "1.11.1",
+      "license": "BSD-3-Clause",
+      "role": "WASM SSH protocol",
+      "upstream": "https://github.com/libssh2/libssh2",
+      "licenseFile": "LICENSES/libssh2.txt",
+      "authorsFile": "LICENSES/libssh2-AUTHORS.txt"
+    },
+    {
+      "name": "Emscripten runtime",
+      "version": "1.39.4.7 Samsung bundle",
+      "license": "MIT OR NCSA",
+      "role": "generated JavaScript/WASM runtime",
+      "upstream": "https://github.com/emscripten-core/emscripten",
+      "licenseFile": "LICENSES/emscripten.txt",
+      "authorsFile": "LICENSES/emscripten-AUTHORS.txt"
+    },
+    {
+      "name": "Samsung Emscripten extensions",
+      "version": "1.39.4.7",
+      "license": "MIT OR NCSA",
+      "role": "Tizen socket host bindings",
+      "upstream": "https://developer.samsung.com/smarttv/develop/extension-libraries/webassembly/tizen-sockets-extension/tizen-sockets-extension.html",
+      "licenseFile": "LICENSES/emscripten.txt",
+      "authorsFile": "LICENSES/samsung-emscripten-notices.txt"
+    },
+    {
+      "name": "musl libc",
+      "version": "bundled with pinned Emscripten",
+      "license": "MIT AND other permissive file notices",
+      "role": "linked C runtime",
+      "upstream": "https://musl.libc.org/",
+      "licenseFile": "LICENSES/musl.txt",
+      "authorsFile": "LICENSES/musl-file-notices.txt"
+    },
+    {
+      "name": "LLVM compiler-rt",
+      "version": "bundled with pinned Emscripten",
+      "license": "MIT OR NCSA; file-specific notices retained",
+      "role": "linked compiler builtins",
+      "upstream": "https://llvm.org/",
+      "licenseFile": "LICENSES/compiler-rt.txt",
+      "authorsFile": "LICENSES/compiler-rt-CREDITS.txt"
+    },
+    {
+      "name": "dlmalloc",
+      "version": "2.8.6 (Emscripten integration)",
+      "license": "CC0-1.0; Emscripten modifications MIT OR NCSA",
+      "role": "linked memory allocator",
+      "upstream": "https://gee.cs.oswego.edu/dl/html/malloc.html",
+      "licenseFile": "LICENSES/CC0-1.0.txt",
+      "authorsFile": "LICENSES/dlmalloc-notice.txt"
+    },
+    {
+      "name": "DejaVu Sans Mono",
+      "version": "2.37",
+      "license": "Bitstream-Vera AND LicenseRef-DejaVu-Public-Domain",
+      "role": "bundled unmodified font",
+      "upstream": "https://dejavu-fonts.github.io/",
+      "licenseFile": "LICENSES/dejavu.txt",
+      "authorsFile": "LICENSES/dejavu-AUTHORS.txt"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.25.12",
+      "license": "MIT",
+      "role": "build tool only",
+      "upstream": "https://github.com/evanw/esbuild",
+      "licenseFile": "LICENSES/esbuild.txt",
+      "authorsFile": "LICENSES/esbuild.txt"
+    },
+    {
+      "name": "TypeScript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "role": "type checker only",
+      "upstream": "https://github.com/microsoft/TypeScript",
+      "licenseFile": "LICENSES/typescript.txt",
+      "authorsFile": "LICENSES/typescript-NOTICE.txt"
+    }
+  ],
+  "sourceArchives": "docs/toolchain-sources.json",
+  "fontProvenance": "assets/fonts/provenance.json"
+}

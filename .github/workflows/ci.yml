@@ -1,0 +1,17 @@
+name: Source checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: corepack enable && corepack prepare pnpm@12.16.1 --activate
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test && pnpm typecheck && pnpm check:publication

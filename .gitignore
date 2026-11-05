@@ -1,0 +1,26 @@
+# Zależności i wyniki przyszłych buildów
+node_modules/
+.toolchain/
+.cache/
+build/
+dist/
+*.wgt
+
+# Lokalne ustawienia i sekrety
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.pem
+*.key
+*.ppk
+id_*
+profiles.xml
+.tizen/
+.secrets/
+
+# Diagnostyka i pliki edytorów
+*.log
+.DS_Store
+*~
