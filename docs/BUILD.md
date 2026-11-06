@@ -6,6 +6,8 @@ Use Linux x86-64, Node.js 22+, pnpm 12.16.1, Docker, Python 3, `unzip` and `tar`
 
 You also need an SSH server with Ed25519 host keys, an unprivileged account and `tmux`. On the TV, a **physical keyboard is required** and a mouse is recommended. No credentials or account creation are included.
 
+An Xbox Bluetooth controller is an optional pointer alternative; it is not required at launch and does not replace keyboard text entry. Pair it on the TV and follow [USAGE.md](USAGE.md#xbox-bluetooth-controller). Real hardware is required for gamepad acceptance.
+
 ## Compile
 
 ```sh

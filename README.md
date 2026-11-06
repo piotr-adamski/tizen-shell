@@ -6,6 +6,8 @@ A four-pane SSH terminal for Samsung Tizen TVs. The TV runs a local web applicat
 
 **A physical keyboard is required. A mouse is recommended.** The TV remote handles navigation and buttons, but cannot replace a keyboard for terminal work, passwords or text fields. The system on-screen keyboard is intentionally disabled. USB is the tested input path; Bluetooth compatibility depends on the TV and keyboard.
 
+An **Xbox Bluetooth controller is an optional mouse alternative** inside the app. Left stick moves the pointer, A clicks, right stick scrolls, Menu opens Settings, and B goes back. Physical mouse support stays available. A controller does not replace the keyboard. See [gamepad controls](docs/USAGE.md#xbox-bluetooth-controller).
+
 > **Privacy warning:** the TV operating system and manufacturer are outside this application's control. Privileged TV software could technically observe what you type, what appears in the terminal, credentials, and private keys while they are decrypted in memory. SSH protects the network connection; it does not hide your work from the TV itself. This is a threat-model warning, not a claim that Samsung is actually collecting your terminal sessions. Do not use this client for secrets you cannot entrust to the TV. Read [SECURITY.md](SECURITY.md).
 
 ## What it does
@@ -14,12 +16,13 @@ A four-pane SSH terminal for Samsung Tizen TVs. The TV runs a local web applicat
 - Persistent remote `tmux` sessions, with local pane switching and zoom.
 - Grid, Focus, Columns and Rows layouts, with fixed font-size ratios.
 - Super shortcuts inspired by Omarchy, plus the existing Ctrl+B prefix.
+- Optional Xbox Bluetooth pointer, click/drag, scrolling, Settings and Back controls.
 - Independently verified host-key pinning and password-protected local key storage.
 - Local code, libraries and font; no analytics, CDN or terminal transcript storage.
 
 ## Status
 
-**Experimental source release: 0.4.0-alpha.1.** Earlier 0.3.3 builds were exercised on a Samsung QE50Q67BAUXXH with Tizen 6.5, including four SSH shells and physical Super-key pane selection. This publication candidate adds neutral configuration, a configurable non-root SSH username and portable build/licensing files. It has not completed full acceptance on all TV models or the full long-running/lifecycle test suite. See [compatibility and limitations](docs/COMPATIBILITY.md).
+**Experimental source release: 0.4.1-alpha.1.** This update adds Xbox Bluetooth controls. On a Samsung QE50Q67BAUXXH / Tizen 6.5, on-device trials of this code confirmed pointer movement and Menu/Settings → B/Back. Click/drag, modal scaling, scrolling, mouse coexistence and event deduplication have automated browser coverage. The combined gamepad/four-SSH acceptance test was deferred; full lifecycle, long-running and wider-model acceptance remain open. Earlier 0.3.3 builds demonstrated four SSH shells and physical Super-key pane selection. See [compatibility and limitations](docs/COMPATIBILITY.md).
 
 ## Start here
 

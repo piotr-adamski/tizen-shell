@@ -7,6 +7,7 @@ import {loadStore,saveStore,eraseStore} from './storage';
 import {Workspace,Composition,paneFontSize,directionalPane} from './workspace';
 import {installDomCompatibility} from './compat';
 import {attachTerminalKeyboard,SuperShortcuts} from './keyboard';
+import {GamepadMouse} from './gamepad';
 declare const tizen:any;
 declare const __TARGET__:any;
 declare const __BUILD_INFO__:any;
@@ -27,6 +28,7 @@ let trustSaving:Promise<void>|null=null,controlModifier=false;
 type Pane={index:number,section:HTMLElement,term:Terminal,fit:FitAddon,worker:Worker|null,stage:number,epoch:number,requests:Map<number,any>,ready:Promise<void>|null,rng:boolean,hostKey:any,lastError:string,blockKeyboard:()=>void};
 const panes:Pane[]=[];
 let superShortcuts:SuperShortcuts|undefined,superMenuRegistered=false;
+let gamepadMouse:GamepadMouse|undefined;
 const closingWorkers=new Set<Worker>();
 function showNotice(title:string,text:string) {$('noticeTitle').textContent=title;$('noticeText').textContent=text;dialog('notice').showModal();}
 function summary(text:string,error=false) {$('summary').textContent=text;$('summary').classList.toggle('error',error);}
@@ -169,6 +171,13 @@ function openSettings() {
   renderKeys();$('settingsError').textContent=storageFault?'Magazyn nie został odczytany. Jawny reset jest potrzebny przed nowym zapisem.':'';
   if(!dialog('settings').open)dialog('settings').showModal();
 }
+function goBack() {
+  const opened=document.querySelectorAll<HTMLDialogElement>('dialog[open]');
+  const top=opened[opened.length-1];
+  if(top?.id==='unlock'){dialogPanes.slice().forEach(i=>disconnect(i));return;}
+  if(top){top.close();focusPane(active);return;}
+  openSettings();
+}
 function showFingerprint(show:boolean) {
   input('fingerprint').type=show?'text':'password';
   $('showFingerprint').textContent=show?'Ukryj odcisk':'Pokaż odcisk';
@@ -297,6 +306,7 @@ async function boot() {
     if(!confirm('Usunąć profil, przypięcie hosta i wszystkie klucze z TV? Dostęp na serwerze trzeba odwołać oddzielnie.'))return;
     try {disconnectAll();await eraseStore();store=newStore(target);await saveStore(store);storageFault=false;applyPreferences();openSettings();}catch(error:any){$('settingsError').textContent=human(error.message);}
   };
+  gamepadMouse=new GamepadMouse($('gamepadStatus'),()=>{if(!document.querySelector('dialog[open]'))$('menu').click();},goBack);
   let menuCode:number|null=null;
   try {
     if(typeof tizen!=='undefined'){
@@ -330,10 +340,7 @@ async function boot() {
   window.addEventListener('resize',fitAll);
   document.addEventListener('keydown',event=>{
     if(event.keyCode===10009) {
-      event.preventDefault();
-      if(dialog('unlock').open){dialogPanes.slice().forEach(i=>disconnect(i));return;}
-      if(dialog('settings').open){dialog('settings').close();focusPane(active);return;}
-      openSettings();
+      event.preventDefault();goBack();return;
     }
     const opened=document.querySelector<HTMLDialogElement>('dialog[open]');
     if(!opened && document.activeElement instanceof HTMLButtonElement && ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.key)) {
@@ -364,5 +371,5 @@ async function boot() {
   bootPhase='READY';if(!storageFault)summary('0/4 połączone');
   document.fonts?.ready.then(()=>fitAll());
 }
-Object.defineProperty(window,'shellDiagnostics',{get:()=>({bootPhase,bootError,apis:{wasm:typeof WebAssembly!=='undefined',rng:!!window.crypto?.getRandomValues,replaceChildren:typeof Element.prototype.replaceChildren==='function'},panes:panes.map(p=>({id:p.index+1,stage:p.stage,rng:p.rng,worker:!!p.worker,error:p.lastError})),closingWorkers:closingWorkers.size,activePane:active+1,composition:workspace.composition,zoomed:workspace.zoomed,version:__BUILD_INFO__.version,sha:__BUILD_INFO__.sha,storageFault,superKey:{registered:superMenuRegistered,...superShortcuts?.diagnostics}})});
+Object.defineProperty(window,'shellDiagnostics',{get:()=>({bootPhase,bootError,apis:{wasm:typeof WebAssembly!=='undefined',rng:!!window.crypto?.getRandomValues,replaceChildren:typeof Element.prototype.replaceChildren==='function'},panes:panes.map(p=>({id:p.index+1,stage:p.stage,rng:p.rng,worker:!!p.worker,error:p.lastError})),closingWorkers:closingWorkers.size,activePane:active+1,composition:workspace.composition,zoomed:workspace.zoomed,version:__BUILD_INFO__.version,sha:__BUILD_INFO__.sha,storageFault,superKey:{registered:superMenuRegistered,...superShortcuts?.diagnostics},gamepad:gamepadMouse?.diagnostics})});
 boot().catch(error=>{bootError=['TypeError','ReferenceError','SecurityError','NotSupportedError'].includes(error?.name)?error.name:'UnknownError';summary(`Nie udało się uruchomić aplikacji. Kod: ${bootPhase}/${bootError}.`,true);});
